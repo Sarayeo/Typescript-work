@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de Tâches Avancée</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Gestion de Tâches</h1>
+    </header>
+    <main>
+        <!-- Section pour rechercher des tâches -->
+        <section id="task-search">
+            <h2>Rechercher des Tâches</h2>
+            <div id="searchContainer">
+                <input type="text" id="searchInput" placeholder="Entrer un mot-clé..." />
+                <button type="button" id="searchButton">Rechercher</button>
+            </div>
+        </section>
+
+        <!-- Section pour créer une nouvelle tâche -->
+        <section id="task-creation">
+            <h2>Ajouter une Tâche</h2>
+            <form id="taskForm">
+                <input type="text" id="taskTitle" placeholder="Titre" required>
+                <textarea id="taskDescription" placeholder="Description" required></textarea>
+                <input name="date" type="date" id="taskDueDate" required>
+                <select id="taskPriority" required>
+                    <option value="Low">Faible</option>
+                    <option value="Medium" selected>Moyenne</option>
+                    <option value="High">Élevée</option>
+                </select>
+                <button type="submit">Ajouter une Tâche</button>
+            </form>
+        </section>
+
+        <!-- Section pour gérer les catégories -->
+        <section>
+            <!-- Formulaire pour ajouter une catégorie -->
+            <form id="categoryForm">
+                <label for="categoryName">Nom de la Catégorie :</label>
+                <input type="text" id="categoryName" required>
+                <button type="submit">Ajouter une Catégorie</button>
+            </form>
+
+            <!-- Liste des catégories -->
+            <div id="category-list">
+
+            </div>
+        </section>
+
+        <!-- Section pour filtrer les tâches -->
+        <section id="task-filter">
+            <h2>Filtrer les Tâches</h2>
+            <form id="filterForm">
+                <label for="filterPriority">Filtrer par Priorité :</label>
+                <select id="filterPriority">
+                    <option value="all">Toutes</option>
+                    <option value="High">Haute</option>
+                    <option value="Medium">Moyenne</option>
+                    <option value="Low">Faible</option>
+                </select>
+
+                <label for="filterDate">Filtrer par Date :</label>
+                <input type="date" id="filterDate">
+
+                <button type="button" id="applyFilter">Appliquer le Filtre</button>
+            </form>
+        </section>
+
+        <!-- Section pour éditer une tâche -->
+        <section>
+            <!-- Contenu du modal de modification -->
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeEditModal()">&times;</span>
+                    <h2>Modifier la tâche</h2>
+                    <form id="editForm">
+                        <label for="editTitle">Titre :</label>
+                        <input type="text" id="editTitle" required>
+
+                        <label for="editDescription">Description :</label>
+                        <textarea id="editDescription" required></textarea>
+
+                        <label for="editDueDate">Date d'échéance :</label>
+                        <input type="date" id="editDueDate" required>
+
+                        <label for="editPriority">Priorité :</label>
+                        <select id="editPriority" required>
+                            <option value="Low">Faible</option>
+                            <option value="Medium">Moyenne</option>
+                            <option value="High">Élevée</option>
+                        </select>
+
+                        <button type="submit">Enregistrer les modifications</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section pour afficher la liste des tâches -->
+        <section>
+            <h2>Liste des Tâches</h2>
+            <div id="displayDiv"></div>
+            <!-- Appeler la fonction pour afficher les données lors du chargement de la page -->
+            <div id="tasks">
+                <div id="task-list">
+                    <div id="tasksList">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Application de Gestion de Tâches</p>
+    </footer>
+    <script>
+        function closeEditModal() {
+            const editModal = document.getElementById('editModal');
+            if (editModal) {
+                editModal.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
